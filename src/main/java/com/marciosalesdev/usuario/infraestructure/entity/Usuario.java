@@ -15,6 +15,7 @@ import java.util.List;
 @Setter
 @ToString
 @Entity
+@Builder
 @Table(name = "usuario")
 public class Usuario implements UserDetails {
 

@@ -1,16 +1,14 @@
 package com.marciosalesdev.usuario.infraestructure.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Entity
+@Builder
 @Table(name = "endereço")
 public class Endereco {
 
