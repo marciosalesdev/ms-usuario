@@ -8,6 +8,7 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
+@Builder
 @Table(name = "endereço")
 @Builder
 public class Endereco {

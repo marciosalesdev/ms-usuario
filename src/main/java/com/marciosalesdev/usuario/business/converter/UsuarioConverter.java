@@ -13,80 +13,77 @@ import java.util.List;
 @Component
 public class UsuarioConverter {
 
-
-    public Usuario paraUsuario(UsuarioDTO usuarioDTO) {
+    public Usuario paraUsuario(UsuarioDTO dto) {
         return Usuario.builder()
-                .nome(usuarioDTO.getNome())
-                .email(usuarioDTO.getEmail())
-                .senha(usuarioDTO.getSenha())
-                .enderecos(paraListaEndereco(usuarioDTO.getEnderecos()))
-                .telefones(paraListaTelefone(usuarioDTO.getTelefones()))
+                .nome(dto.getNome())
+                .email(dto.getEmail())
+                .senha(dto.getSenha())
+                .enderecos(paraListaEndereco(dto.getEnderecos()))
+                .telefones(paraListaTelefone(dto.getTelefones()))
                 .build();
     }
 
-    public List<Endereco> paraListaEndereco(List<EnderecoDTO> enderecoDTOS) {
-        return enderecoDTOS.stream().map(this::paraEndereco).toList();
+    public List<Endereco> paraListaEndereco(List<EnderecoDTO> dto) {
+        return dto.stream().map(this::paraEndereco).toList();
     }
 
-    public Endereco paraEndereco(EnderecoDTO enderecoDTO) {
+
+    public Endereco paraEndereco(EnderecoDTO dto) {
         return Endereco.builder()
-                .rua(enderecoDTO.getRua())
-                .cep(enderecoDTO.getCep())
-                .complemento(enderecoDTO.getComplemento())
-                .cidade(enderecoDTO.getCidade())
-                .estado(enderecoDTO.getEstado())
-                .numero(enderecoDTO.getNumero())
+                .rua(dto.getRua())
+                .numero(dto.getNumero())
+                .complemento(dto.getComplemento())
+                .cidade(dto.getCidade())
+                .estado(dto.getEstado())
+                .cep(dto.getCep())
                 .build();
     }
 
-
-    public List<Telefone> paraListaTelefone(List<TelefoneDTO> telefones) {
-        return telefones.stream().map(this::paraTelefone).toList();
+    public List<Telefone> paraListaTelefone(List<TelefoneDTO> telefonteDto) {
+        return telefonteDto.stream().map(this::paraTelefone).toList();
     }
 
-
-    public Telefone paraTelefone(TelefoneDTO telefoneDTO) {
+    public Telefone paraTelefone(TelefoneDTO dto) {
         return Telefone.builder()
-                .numero(telefoneDTO.getNumero())
-                .ddd(telefoneDTO.getDdd())
+                .ddd(dto.getDdd())
+                .numero(dto.getNumero())
                 .build();
     }
 
-    public UsuarioDTO paraUsuarioDTO(Usuario usuarioDTO) {
+    public UsuarioDTO converterParaUsuarioDTO(Usuario usuario) {
         return UsuarioDTO.builder()
-                .nome(usuarioDTO.getNome())
-                .email(usuarioDTO.getEmail())
-                .senha(usuarioDTO.getSenha())
-                .enderecos(paraListaEnderecoDto(usuarioDTO.getEnderecos()))
-                .telefones(paraListaTelefoneDto(usuarioDTO.getTelefones()))
+                .nome(usuario.getNome())
+                .email(usuario.getEmail())
+                .senha(usuario.getSenha())
+                .enderecos(paraListaEnderecoDTO(usuario.getEnderecos()))
+                .telefones(paraListaTelefoneDTO(usuario.getTelefones()))
                 .build();
     }
 
-    public List<EnderecoDTO> paraListaEnderecoDto(List<Endereco> enderecoDTOS) {
-        return enderecoDTOS.stream().map(this::paraEnderecoDto).toList();
+    public List<EnderecoDTO> paraListaEnderecoDTO(List<Endereco> enderecos) {
+        return enderecos.stream().map(this::paraEnderecoDTO).toList();
     }
 
-    public EnderecoDTO paraEnderecoDto(Endereco enderecoDTO) {
+
+    public EnderecoDTO paraEnderecoDTO(Endereco endereco) {
         return EnderecoDTO.builder()
-                .rua(enderecoDTO.getRua())
-                .cep(enderecoDTO.getCep())
-                .complemento(enderecoDTO.getComplemento())
-                .cidade(enderecoDTO.getCidade())
-                .estado(enderecoDTO.getEstado())
-                .numero(enderecoDTO.getNumero())
+                .rua(endereco.getRua())
+                .numero(endereco.getNumero())
+                .complemento(endereco.getComplemento())
+                .cidade(endereco.getCidade())
+                .estado(endereco.getEstado())
+                .cep(endereco.getCep())
                 .build();
     }
 
-
-    public List<TelefoneDTO> paraListaTelefoneDto(List<Telefone> telefones) {
-        return telefones.stream().map(this::paraTelefoneDto).toList();
+    public List<TelefoneDTO> paraListaTelefoneDTO(List<Telefone> telefonte) {
+        return telefonte.stream().map(this::paraTelefoneDTO).toList();
     }
 
-
-    public TelefoneDTO paraTelefoneDto(Telefone telefoneDTO) {
+    public TelefoneDTO paraTelefoneDTO(Telefone telefone) {
         return TelefoneDTO.builder()
-                .numero(telefoneDTO.getNumero())
-                .ddd(telefoneDTO.getDdd())
+                .ddd(telefone.getDdd())
+                .numero(telefone.getNumero())
                 .build();
     }
 }

@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequiredArgsConstructor
-@RequestMapping("usuario")
 @RestController
+@RequestMapping(path = "/usuario")
+@RequiredArgsConstructor
 public class UsuarioController {
 
 
-    private UsuarioService usuarioService;
+    private final UsuarioService usuarioService;
+
 
     @PostMapping
     public ResponseEntity<UsuarioDTO> salvarUsuario(@RequestBody UsuarioDTO usuarioDTO) {
