@@ -10,7 +10,6 @@ import lombok.*;
 @Entity
 @Builder
 @Table(name = "endereço")
-@Builder
 public class Endereco {
 
     @Id
