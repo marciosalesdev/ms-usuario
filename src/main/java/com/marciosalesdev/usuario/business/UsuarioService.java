@@ -57,7 +57,7 @@ public class UsuarioService {
     public UsuarioDTO atualizarDadosUsuario(String token, UsuarioDTO usuarioDTO) {
         String email = jwtUtil.extractUsername(token.substring(7));
 
-        usuarioDTO.setSenha(usuarioDTO.getEmail() != null ? passwordEncoder.encode(usuarioDTO.getSenha()) : null);
+        usuarioDTO.setSenha(usuarioDTO.getSenha() != null ? passwordEncoder.encode(usuarioDTO.getSenha()) : null);
         Usuario usuarioEntity = usuarioRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("Email não encontrado " + email));
 
         Usuario usuario = usuarioConverter.updateUsuario(usuarioDTO, usuarioEntity);
