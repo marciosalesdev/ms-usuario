@@ -65,4 +65,16 @@ public class UsuarioController {
                                                         @RequestParam("id") Long id) {
         return ResponseEntity.ok(usuarioService.atualizaTelefone(id, telefoneDTO));
     }
+
+    @PostMapping(path = "/endereco")
+    public ResponseEntity<EnderecoDTO> cadastroEndereco(@RequestBody EnderecoDTO enderecoDTO,
+                                                        @RequestHeader("Authorization") String token) {
+        return ResponseEntity.ok(usuarioService.cadastroEndereco(token, enderecoDTO));
+    }
+
+    @PostMapping(path = "/telefone")
+    public ResponseEntity<TelefoneDTO> cadastroTelefone(@RequestBody TelefoneDTO telefoneDTO,
+                                                        @RequestHeader("Authorization") String token) {
+        return ResponseEntity.ok(usuarioService.cadatroTelefone(token, telefoneDTO));
+    }
 }

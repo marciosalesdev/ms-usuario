@@ -119,4 +119,25 @@ public class UsuarioConverter {
                 .numero(telefoneDTO.getNumero() != null ? telefoneDTO.getNumero() : telefone.getNumero())
                 .build();
     }
+
+    public Endereco cadastroEndereco(EnderecoDTO enderecoDTO, Long id) {
+        return Endereco.builder()
+                .estado(enderecoDTO.getEstado())
+                .cep(enderecoDTO.getCep())
+                .complemento(enderecoDTO.getComplemento())
+                .numero(enderecoDTO.getNumero())
+                .cidade(enderecoDTO.getCidade())
+                .rua(enderecoDTO.getRua())
+                .usuarioId(id)
+                .build();
+
+    }
+
+    public Telefone cadastroTelefone(TelefoneDTO telefoneDTO, Long id) {
+        return Telefone.builder()
+                .ddd(telefoneDTO.getDdd())
+                .numero(telefoneDTO.getNumero())
+                .usuarioId(id)
+                .build();
+    }
 }
