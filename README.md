@@ -100,6 +100,8 @@ jwt.expiration=86400000
 | POST | `/auth/login`       | Login e geração de token | Não |
 | GET | `/usuarios/{email}` | Buscar usuario por email | JWT |
 | PUT | `/usuarios/{id}`    | Atualização de perfil    | JWT |
+| Método | Rota | Descrição | Auth |
+
 
 ---
 
